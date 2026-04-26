@@ -32,7 +32,7 @@ Built as a **DevOps-focused portfolio project** demonstrating containerization, 
 
 ## 📂 Project Structure
 
-```
+```id="projstruct1"
 PhotoBooth/
 │
 ├── app/
@@ -61,7 +61,7 @@ PhotoBooth/
 
 ### 1. Build and run
 
-```bash
+```bash id="dock1"
 docker compose up --build
 ```
 
@@ -77,13 +77,13 @@ http://localhost:8000
 
 ### 1. SSH into instance
 
-```bash
+```bash id="ssh1"
 ssh -i your-key.pem ubuntu@<EC2_IP>
 ```
 
 ### 2. Install Docker
 
-```bash
+```bash id="dock2"
 sudo apt update
 sudo apt install -y docker.io
 sudo systemctl start docker
@@ -92,14 +92,14 @@ sudo systemctl enable docker
 
 ### 3. Clone repo
 
-```bash
+```bash id="clone1"
 git clone https://github.com/Luke-356/PhotoBooth.git
 cd PhotoBooth
 ```
 
 ### 4. Run app
 
-```bash
+```bash id="run1"
 docker compose up -d
 ```
 
@@ -136,6 +136,18 @@ Allow inbound traffic:
 * Cloud deployment on AWS EC2
 * Clean repository (no large model files)
 * Scalable architecture for production extension
+
+---
+
+## 🔗 Acknowledgements
+
+This project uses:
+
+* Meta AI’s Segment Anything model for image segmentation
+* Ultralytics YOLOv8 for object detection
+* Stable Diffusion for inpainting
+
+Special thanks to the open-source community.
 
 ---
 
