@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>PhotoBooth Remove People</title>
+    <link rel="stylesheet" href="/static/styles.css" />
+  </head>
+  <body>
+    <div class="page-shell">
+      <header class="hero">
+        <h1>PhotoBooth</h1>
+        <p>Upload a photo, choose a style, and remove people from the background.</p>
+      </header>
+
+      <main class="card">
+        <form id="upload-form" class="upload-form">
+          <label class="field">
+            <span>Choose an image</span>
+            <input type="file" id="image-input" accept="image/*" required />
+          </label>
+
+          <label class="field">
+            <span>Background style</span>
+            <select id="style-select">
+              <option value="natural">Natural</option>
+              <option value="vintage">Vintage</option>
+              <option value="dreamy">Dreamy</option>
+              <option value="studio">Studio</option>
+            </select>
+          </label>
+
+          <div class="button-row">
+            <button type="submit" class="button">Upload & Process</button>
+            <button type="button" id="clear-button" class="button button-secondary">
+              Clear Results
+            </button>
+          </div>
+        </form>
+
+        <div class="preview-grid">
+          <section>
+            <h2>Original</h2>
+            <img id="original-image" class="preview-image"/>
+          </section>
+          <section>
+            <h2>Result</h2>
+            <div class="preview-frame">
+              <img id="result-image" class="preview-image" />
+              <div id="loading-overlay" class="loading-overlay hidden">
+                <div class="spinner"></div>
+                <span>Processing...</span>
+              </div>
+            </div>
+          </section>
+        </div>
+
+        <div id="status" class="status">Select a photo and click upload.</div>
+      </main>
+    </div>
+
+    <script src="/static/app.js"></script>
+  </body>
+</html>

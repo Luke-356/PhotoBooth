@@ -1,0 +1,8 @@
+services:
+  photobooth:
+    build: .
+    container_name: photobooth
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./models:/models
