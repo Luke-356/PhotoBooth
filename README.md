@@ -7,10 +7,9 @@ This project demonstrates full-stack deployment, ML inference serving, and DevOp
 
 # 🚀 Live Demo
 
-[http://3.144.175.277:8000](http://3.144.175.227:8000)
+http://3.144.175.277:8000
 
-
-<!--Demo temporarily offline (AWS cost optimization)-->
+<!-- Demo temporarily offline (AWS cost optimization) -->
 
 ---
 
@@ -18,7 +17,8 @@ This project demonstrates full-stack deployment, ML inference serving, and DevOp
 
 This project is a containerized AI web application that:
 - Accepts image input
-- Processes images using computer vision / ML models
+- Detects people using YOLO models
+- Applies optimized image processing (CPU-friendly pipeline)
 - Serves results through a FastAPI backend
 - Runs fully inside Docker on an AWS EC2 instance
 
@@ -26,19 +26,15 @@ This project is a containerized AI web application that:
 
 # 🏗️ Architecture
 
-Client (Browser)
-      |
-      v
-EC2 Instance (Ubuntu)
-      |
-      v
-Docker Compose
-      |
-      v
-FastAPI Backend (Uvicorn)
-      |
-      v
-AI Models (Torch / Diffusers / OpenCV / Ultralytics)
+Client (Browser)  
+      ↓  
+EC2 Instance (Ubuntu)  
+      ↓  
+Docker Compose  
+      ↓  
+FastAPI Backend (Uvicorn)  
+      ↓  
+AI Processing Pipeline (YOLO + OpenCV + PyTorch)
 
 ---
 
@@ -50,9 +46,8 @@ AI Models (Torch / Diffusers / OpenCV / Ultralytics)
 
 ## AI / ML
 - PyTorch
-- Diffusers
 - OpenCV
-- Ultralytics (YOLO models)
+- Ultralytics (YOLO)
 - NumPy
 
 ## DevOps
@@ -64,8 +59,8 @@ AI Models (Torch / Diffusers / OpenCV / Ultralytics)
 
 # 🖥️ EC2 Deployment Details
 
-- AWS EC2 Ubuntu Server
-- Instance type: m7i-flex.large (or your selected type)
+- AWS EC2 Ubuntu Server  
+- Instance type: m7i-flex.large  
 
 Ports:
 - 8000 → FastAPI app
@@ -75,18 +70,24 @@ Ports:
 # 📦 Setup Instructions
 
 ## 1. Clone repository
-git clone https://github.com/Luke-356/PhotoBooth.git <br/>
-cd photobooth
+```bash
+git clone https://github.com/Luke-356/PhotoBooth.git
+cd PhotoBooth
+```
 
 ---
 
 ## 2. Build and run
+```bash
 docker-compose up -d --build
+```
 
 ---
 
 ## 3. Check containers
+```bash
 docker ps
+```
 
 ---
 
@@ -103,26 +104,38 @@ http://your-ec2-public-ip:8000
 # 🧾 Docker Commands
 
 Start:
+```bash
 docker-compose up -d
+```
 
 Stop:
+```bash
 docker-compose down
+```
 
 Logs:
+```bash
 docker logs <container_id>
+```
 
 ---
 
 # ⚠️ Common Issues
 
 ## No space left
+```bash
 docker system prune -a
+```
 
 ## Restart on reboot
-restart: unless-stopped (in docker-compose.yml)
+Add in docker-compose.yml:
+```yaml
+restart: unless-stopped
+```
 
 ## Port not accessible
-Check AWS Security Group (allow 8000)
+- Check AWS Security Group
+- Allow inbound traffic on port 8000
 
 ---
 
@@ -138,9 +151,27 @@ Check AWS Security Group (allow 8000)
 
 - Dockerized AI application
 - Cloud deployment on AWS EC2
-- ML inference serving via API
-- Production-style container setup
-- Basic infrastructure troubleshooting
+- ML inference served via REST API
+- Container-based deployment workflow
+- Handles real-world performance constraints (CPU-only)
+
+---
+
+# ⚠️ Limitations
+
+- Uses optimized (CPU-friendly) processing instead of full inpainting
+- Processing time depends on image size
+- Not production-hardened (demo project)
+
+---
+
+# 🚧 Future Improvements
+
+- Add CI/CD pipeline (GitHub Actions)
+- Add Nginx reverse proxy
+- Enable GPU support (g4/g5 instances)
+- Improve processing quality
+- Add monitoring/logging
 
 ---
 
