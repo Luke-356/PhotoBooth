@@ -1,174 +1,148 @@
-# 🧠 AI PhotoBooth – Remove People from Images
+# 📸 PhotoBooth AI App (Docker + AWS EC2 Deployment)
 
-A Dockerized AI web application that detects and removes people from images using computer vision and diffusion models.
-
-Built as a **DevOps-focused portfolio project** demonstrating containerization, cloud deployment, and scalable architecture.
-
----
-
-## 🚀 Features
-
-* 📸 Upload an image via web UI
-* 🧍 Detect people using YOLOv8
-* 🧠 Generate masks and remove people
-* 🎨 Inpaint background using Stable Diffusion
-* 🐳 Fully Dockerized (production-ready)
-* ☁️ Deployable on AWS EC2
+An AI-powered PhotoBooth application built with **FastAPI**, computer vision models, and deployed using **Docker on AWS EC2**.  
+This project demonstrates full-stack deployment, ML inference serving, and DevOps practices.
 
 ---
 
-## 🏗️ Tech Stack
+# 🚀 Live Demo
 
-* **Backend:** FastAPI
-* **AI Models:**
-
-  * YOLOv8 (object detection)
-  * Stable Diffusion Inpainting (image generation)
-* **Image Processing:** OpenCV, PIL
-* **Containerization:** Docker & Docker Compose
-* **Deployment:** AWS EC2
+http://<YOUR-EC2-PUBLIC-IP>:8000
 
 ---
 
-## 📂 Project Structure
+# 🧠 Overview
 
-```id="projstruct1"
-PhotoBooth/
-│
-├── app/
-│   ├── main.py              # FastAPI app
-│   └── static/              # Frontend (HTML, JS, CSS)
-│
-├── Dockerfile
-├── docker-compose.yml
-├── requirements.txt
-└── README.md
-```
+This project is a containerized AI web application that:
+- Accepts image input
+- Processes images using computer vision / ML models
+- Serves results through a FastAPI backend
+- Runs fully inside Docker on an AWS EC2 instance
 
 ---
 
-## ⚙️ How It Works
+# 🏗️ Architecture
 
-1. User uploads an image
-2. YOLO detects people in the image
-3. Masks are generated for detected regions
-4. Stable Diffusion fills in the removed areas
-5. Final image is returned without people
+Client (Browser)
+      |
+      v
+EC2 Instance (Ubuntu)
+      |
+      v
+Docker Compose
+      |
+      v
+FastAPI Backend (Uvicorn)
+      |
+      v
+AI Models (Torch / Diffusers / OpenCV / Ultralytics)
 
 ---
 
-## 🐳 Run with Docker (Local)
+# ⚙️ Tech Stack
 
-### 1. Build and run
+## Backend
+- FastAPI
+- Uvicorn
 
-```bash id="dock1"
-docker compose up --build
-```
+## AI / ML
+- PyTorch
+- Diffusers
+- OpenCV
+- Ultralytics (YOLO models)
+- NumPy
 
-### 2. Open in browser
+## DevOps
+- Docker
+- Docker Compose
+- AWS EC2 (Ubuntu)
 
-```
+---
+
+# 🖥️ EC2 Deployment Details
+
+- AWS EC2 Ubuntu Server
+- Instance type: m7i-flex.large (or your selected type)
+
+Ports:
+- 8000 → FastAPI app
+
+---
+
+# 📦 Setup Instructions
+
+## 1. Clone repository
+git clone https://github.com/Luke-356/photobooth.git
+cd photobooth
+
+---
+
+## 2. Build and run
+docker-compose up -d --build
+
+---
+
+## 3. Check containers
+docker ps
+
+---
+
+## 4. Open app
+
+Local:
 http://localhost:8000
-```
+
+EC2:
+http://<EC2-PUBLIC-IP>:8000
 
 ---
 
-## ☁️ Deploy on AWS EC2
+# 🧾 Docker Commands
 
-### 1. SSH into instance
+Start:
+docker-compose up -d
 
-```bash id="ssh1"
-ssh -i your-key.pem ubuntu@<EC2_IP>
-```
+Stop:
+docker-compose down
 
-### 2. Install Docker
-
-```bash id="dock2"
-sudo apt update
-sudo apt install -y docker.io
-sudo systemctl start docker
-sudo systemctl enable docker
-```
-
-### 3. Clone repo
-
-```bash id="clone1"
-git clone https://github.com/Luke-356/PhotoBooth.git
-cd PhotoBooth
-```
-
-### 4. Run app
-
-```bash id="run1"
-docker compose up -d
-```
-
-### 5. Open in browser
-
-```
-http://<EC2_IP>:8000
-```
+Logs:
+docker logs <container_id>
 
 ---
 
-## 🔐 Security Group Setup (IMPORTANT)
+# ⚠️ Common Issues
 
-Allow inbound traffic:
+## No space left
+docker system prune -a
 
-| Type       | Port | Source    |
-| ---------- | ---- | --------- |
-| Custom TCP | 8000 | 0.0.0.0/0 |
-| SSH        | 22   | Your IP   |
+## Restart on reboot
+restart: unless-stopped (in docker-compose.yml)
 
----
-
-## ⚠️ Notes
-
-* AI models are downloaded at runtime (not stored in repo)
-* First request may take longer due to model loading
-* CPU mode is supported, but GPU is recommended for performance
+## Port not accessible
+Check AWS Security Group (allow 8000)
 
 ---
 
-## 📈 DevOps Highlights
+# 🔐 Security Notes
 
-* Containerized ML application using Docker
-* Cloud deployment on AWS EC2
-* Clean repository (no large model files)
-* Scalable architecture for production extension
-
----
-
-## 🔗 Acknowledgements
-
-This project uses:
-
-* Meta AI’s Segment Anything model for image segmentation
-* Ultralytics YOLOv8 for object detection
-* Stable Diffusion for inpainting
-
-Special thanks to the open-source community.
+- This is a demo/portfolio deployment
+- No authentication enabled
+- Port 8000 is publicly exposed
 
 ---
 
-## 🔮 Future Improvements
+# 📊 DevOps Highlights
 
-* Add Nginx reverse proxy
-* Enable HTTPS (Let’s Encrypt)
-* Add CI/CD pipeline (GitHub Actions)
-* Use S3 for model storage
-* GPU acceleration support
-
----
-
-## 👨‍💻 Author
-
-**Nyi Nyi Lwin**
-Master’s in Computer Science – Pace University
-Aspiring DevOps Engineer
+- Dockerized AI application
+- Cloud deployment on AWS EC2
+- ML inference serving via API
+- Production-style container setup
+- Basic infrastructure troubleshooting
 
 ---
 
-## ⭐ If you like this project
+# 👨‍💻 Author
 
-Give it a star on GitHub!
+Nyi Nyi Lwin  
+Master’s in Computer Science  
+Pace University
