@@ -75,7 +75,7 @@ Ports:
 # 📦 Setup Instructions
 
 ## 1. Clone repository
-git clone https://github.com/Luke-356/photobooth.git
+git clone https://github.com/Luke-356/PhotoBooth.git <br/>
 cd photobooth
 
 ---
@@ -96,7 +96,7 @@ Local:
 http://localhost:8000
 
 EC2:
-[http://3.144.175.277:8000](http://3.144.175.227:8000)
+http://your-ec2-public-ip:8000
 
 ---
 
