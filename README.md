@@ -96,7 +96,7 @@ Local:
 http://localhost:8000
 
 EC2:
-http://<EC2-PUBLIC-IP>:8000
+[http://3.144.175.277:8000](http://3.144.175.227:8000)
 
 ---
 
