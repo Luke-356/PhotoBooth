@@ -7,7 +7,10 @@ This project demonstrates full-stack deployment, ML inference serving, and DevOp
 
 # 🚀 Live Demo
 
-http://<YOUR-EC2-PUBLIC-IP>:8000
+[http://<YOUR-EC2-PUBLIC-IP>:8000](http://3.144.175.227:8000)
+
+
+<!--Demo temporarily offline (AWS cost optimization)-->
 
 ---
 
