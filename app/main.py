@@ -102,7 +102,7 @@ def startup():
 # ----------------------------
 # Helpers
 # ----------------------------
-def resize_if_needed(img, max_size=1024):
+def resize_if_needed(img, max_size=768):
     h, w = img.shape[:2]
     if max(h, w) > max_size:
         scale = max_size / max(h, w)
@@ -132,7 +132,7 @@ def process_image(image_bgr, prompt, negative):
     rgb = cv2.cvtColor(image_bgr, cv2.COLOR_BGR2RGB)
     pil_img = Image.fromarray(rgb)
 
-    results = detector(image_bgr, conf=0.4)
+    results = detector(image_bgr, conf=0.5)
 
     boxes = []
     for r in results:
@@ -156,9 +156,9 @@ def process_image(image_bgr, prompt, negative):
             negative_prompt=negative,
             image=small_img,
             mask_image=small_mask,
-            num_inference_steps=25,
+            num_inference_steps=5,
             guidance_scale=7.5,
-            strength=0.95,
+            strength=0.7,
         ).images[0]
 
     out = out.resize((w, h))

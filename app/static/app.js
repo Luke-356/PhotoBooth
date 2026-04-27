@@ -97,7 +97,7 @@ form.addEventListener("submit", async (event) => {
 
   try {
     const controller = new AbortController();
-    const timeoutId = setTimeout(() => controller.abort(), 180000); // 3 min
+    const timeoutId = setTimeout(() => controller.abort(), 360000); // 3 min
 
     const url = new URL("/remove-people/", window.location.origin).toString();
 
