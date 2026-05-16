@@ -9,7 +9,7 @@ This project demonstrates full-stack deployment, ML inference serving, and DevOp
 
 http://3.144.175.227:8000
 
-Suspended for aws budget reasons. Will be up again soon.
+Suspended for AWS budget reasons. Will be up again soon.
 
 <!-- Demo temporarily offline (AWS cost optimization) -->
 
