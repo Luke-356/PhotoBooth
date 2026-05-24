@@ -14,9 +14,9 @@ This project demonstrates:
 
 # 🚀 Live Demo
 
-http://3.144.175.227:8000
+http://3.134.80.193:8000
 
-*Currently suspended for AWS budget optimization. Deployment will be restored soon.*
+<!--*Currently suspended for AWS budget optimization. Deployment will be restored soon.*-->
 
 ---
 
