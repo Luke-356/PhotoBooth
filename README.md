@@ -15,7 +15,7 @@ This project demonstrates:
 # 🚀 Live Demo
 
 http://3.134.80.193:8000
-
+(Currently paused for AWS budget purposes) 
 <!--*Currently suspended for AWS budget optimization. Deployment will be restored soon.*-->
 
 ---
